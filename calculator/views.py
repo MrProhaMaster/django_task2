@@ -28,3 +28,39 @@ DATA = {
 #     'ингредиент2': количество2,
 #   }
 # }
+
+def omlet_recipe(request):
+    amount = int(request.GET.get("servings", 1))
+    recipe = DATA['omlet']
+    for i in recipe:
+        recipe[i] = recipe[i]*amount
+    context = {
+        'recipe': recipe,
+        'name': 'Омлет',
+        'count': amount,
+    }
+    return render(request, 'calculator/index.html', context)
+
+def pasta_recipe(request):
+    amount = int(request.GET.get("servings", 1))
+    recipe = DATA['pasta']
+    for i in recipe:
+        recipe[i] = recipe[i]*amount
+    context = {
+        'recipe': recipe,
+        'name': 'Паста',
+        'count': amount
+    }
+    return render(request, 'calculator/index.html', context)
+
+def buter_recipe(request):
+    amount = int(request.GET.get("servings", 1))
+    recipe = DATA['buter']
+    for i in recipe:
+        recipe[i] = recipe[i]*amount
+    context = {
+        'recipe': recipe,
+        'name': 'Бутерброд',
+        'count': amount,
+    }
+    return render(request, 'calculator/index.html', context)
